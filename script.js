@@ -1,29 +1,33 @@
 // Assignment Code
+// Variables containing each type of character
 var generateBtn = document.querySelector("#generate");
-var passChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","{","|","}","~"];
+var passLower = "abcdefghijklmnopqrstuvwxyz".split("")
+var passUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+var passNum = "0123456789".split("")
+var passSym = "!#$%&'()*+-./:;<=>?@[]^_{|},~".split("")
+
+//Combining each of the character arrays via .concat
+let newArr = [];
+newArr = newArr.concat(passLower);
+newArr = newArr.concat(passUpper);
+newArr = newArr.concat(passNum);
+newArr = newArr.concat(passSym);
+
 
 // Write password to the #password input
 
 function generatePassword() {
-  var userChoice = prompt("Pass?");
-  var passLength = userChoice;
-  charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[]^_{|}~";
-  for (var i = 0; i<passLength; i++){
-    return charset.charAt(Math.floor(Math.random() * charset.length));
+  //Prompt to decide the password length
+  var userChoice = prompt("How long would you like your password?");
+  var passLength = parseInt(userChoice);
+  // Added variable -password- to give a place for the characters to go
+  var password = ""
+  for (var i = 0; i <passLength; i++){
+  password += newArr[Math.floor(Math.random() * newArr.length)]
   }
+  return password
 }
 
-
-// function generatePassword() {
-//   var userChoice = prompt("How long would you like your password?")
-//   var passLength = userChoice,
-//       charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[]^_{|}~",
-//       retVal = "";
-//   for (var i = 0; i < passLength; ++i) {
-//     retVal += charset.charAt(Math.floor(Math.random() * charset.length));
-//   }
-//   return retVal;
-// }
 
 function writePassword() {
     var password = generatePassword();
