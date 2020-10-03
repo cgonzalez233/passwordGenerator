@@ -17,15 +17,20 @@ newArr = newArr.concat(passSym);
 // Write password to the #password input
 
 function generatePassword() {
-  //Prompt to decide the password length
+
   var userChoice = prompt("How long would you like your password?");
-  var passLength = parseInt(userChoice);
-  // Added variable -password- to give a place for the characters to go
-  var password = ""
-  for (var i = 0; i <passLength; i++){
-  password += newArr[Math.floor(Math.random() * newArr.length)]
-  }
-  return password
+  //if else statement to prevent someone from putting in something other than a number
+  if (!isNaN(Number(userChoice)) === true){
+    var passLength = parseInt(userChoice);
+    var password = ""
+    for (var i = 0; i <passLength; i++){
+    password += newArr[Math.floor(Math.random() * newArr.length)]
+    }
+    return password
+  }else {
+    alert("Please enter a number!")
+  };
+
 }
 
 
@@ -39,3 +44,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
